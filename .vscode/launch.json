@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "type": "java",
+                "name": "SignupUI",
+                "request": "launch",
+                "mainClass": "SignupUI",
+                "projectName": "Tarea_03_74412305",
+                "vmArgs": "--module-path /Users/isaizurita/javafx-sdk-17.0.13/lib --add-modules javafx.controls"
+            },
+            {
+                "type": "java",
+                "name": "Current File",
+                "request": "launch",
+                "mainClass": "${file}",
+                "vmArgs": "--module-path /Users/isaizurita/javafx-sdk-17.0.13/lib --add-modules javafx.controls"
+            },
+            {
+                "type": "java",
+                "name": "LoginUI",
+                "request": "launch",
+                "mainClass": "LoginUI",
+                "projectName": "Tarea_03_74412305",
+                "vmArgs": "--module-path /Users/isaizurita/javafx-sdk-17.0.13/lib --add-modules javafx.controls"
+            },
+            {
+                "type": "java",
+                "name": "ResetPasswordUI",
+                "request": "launch",
+                "mainClass": "ResetPasswordUI",
+                "projectName": "Tarea_03_74412305",
+                "vmArgs": "--module-path /Users/isaizurita/javafx-sdk-17.0.13/lib --add-modules javafx.controls"
+            }
+        ]
+    }
+    
