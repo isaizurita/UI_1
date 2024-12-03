@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.Region;
 
+//Ésta interfaz es análoga a las dos anteriores en cuanto a componentes y configuraciones
 public class SignupUI extends Application 
     {
 

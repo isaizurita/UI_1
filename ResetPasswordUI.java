@@ -18,6 +18,7 @@ public class ResetPasswordUI extends Application
         @Override
         public void start(Stage primaryStage) 
             {
+                //Se crea el VBox que usaremos para la ventana al igual que su configuración
                 VBox root = new VBox(15);
                 root.setAlignment(Pos.CENTER);
                 root.setStyle("-fx-background-color: #242E49;");
@@ -40,6 +41,7 @@ public class ResetPasswordUI extends Application
                 Region spacer2 = new Region();
                 spacer2.setPrefHeight(5);
 
+                //Se usa el mismo efecto para el botón que la interfaz anterior
                 Button Button = new Button("Enviar enlace de recuperación");
                 Button.setFont(Font.font("Montserrat", 14));
                 Button.setStyle("-fx-background-color: #37415C; -fx-text-fill: white;");
@@ -54,8 +56,10 @@ public class ResetPasswordUI extends Application
                         Button.setStyle("-fx-background-color: #37415C; -fx-text-fill: white;");
                     });
 
+                //Se cargan los componentes
                 root.getChildren().addAll(logo, title, spacer1, usernameField, spacer2, Button);
 
+                //Se carga la escena
                 Scene scene = new Scene(root, 400, 400);
                 scene.getRoot().setStyle("-fx-background-color: #242E49;");
 
