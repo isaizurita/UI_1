@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
@@ -17,6 +16,10 @@ public class SettingsUI extends Application {
     public void start(Stage primaryStage) {
         // Panel principal
         BorderPane mainPane = new BorderPane();
+
+        Region blueBackground = new Region();
+        blueBackground.setStyle("-fx-background-color: #242E49;"); // Azul
+        mainPane.setTop(blueBackground);
 
         Region spacer1 = new Region();
         spacer1.setPrefWidth(15);
@@ -31,8 +34,8 @@ public class SettingsUI extends Application {
         backIcon.setFitHeight(50);
 
         ImageView logo = new ImageView(new Image("logo.png"));
-        logo.setFitWidth(110);
-        logo.setFitHeight(110);
+        logo.setFitWidth(100);
+        logo.setFitHeight(100);
 
         Label title = new Label("AJUSTES");
         title.setFont(Font.font("Arial", FontWeight.BOLD, 24));
@@ -75,7 +78,7 @@ public class SettingsUI extends Application {
                     setText(null);
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: #999999; -fx-background-color: #364C63;");
+                    setStyle("-fx-text-fill: #FFFFFF; -fx-background-color: #364C63;");
                 }
             }
         });
@@ -107,7 +110,7 @@ public class SettingsUI extends Application {
                     setText(null);
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: #999999; -fx-background-color: #364C63;");
+                    setStyle("-fx-text-fill: #FFFFFF; -fx-background-color: #364C63;");
                 }
             }
         });
@@ -249,7 +252,6 @@ public class SettingsUI extends Application {
         equalizerButtonBox.setMaxWidth(Double.MAX_VALUE); // Asegura que ocupe todo el espacio horizontal disponible
         equalizerButtonBox.setPadding(new Insets(10, 10, 10, 100)); // Agrega 20px de espacio a la izquierda
 
-
         Slider crossfadeSlider = new Slider(0, 12, 0);
         crossfadeSlider.setShowTickMarks(true);
         crossfadeSlider.setShowTickLabels(true);
@@ -310,7 +312,7 @@ public class SettingsUI extends Application {
                     setText(null);
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: #999999; -fx-background-color: #364C63;");
+                    setStyle("-fx-text-fill: #FFFFFF; -fx-background-color: #364C63;");
                 }
             }
         });
@@ -318,7 +320,7 @@ public class SettingsUI extends Application {
         Region region7 = new Region();
         region7.setPrefHeight(5);
 
-        Label regionLabel7 = new Label("Calidad del audio");
+        Label regionLabel7 = new Label("Calidad de descargas");
         regionLabel7.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         regionLabel7.setStyle("-fx-text-fill: white;");
 
@@ -342,7 +344,7 @@ public class SettingsUI extends Application {
                     setText(null);
                 } else {
                     setText(item);
-                    setStyle("-fx-text-fill: #999999; -fx-background-color: #364C63;");
+                    setStyle("-fx-text-fill: #FFFFFF; -fx-background-color: #364C63;");
                 }
             }
         });
@@ -364,29 +366,55 @@ public class SettingsUI extends Application {
             downloadQualityCombo
         );
 
-
         // Panel derecho: Configuración Social
         VBox rightPanel = new VBox(15);
         rightPanel.setPadding(new Insets(0, 50, 10, 10)); // Ajusta el padding para consistencia
         rightPanel.setStyle("-fx-background-color: #242E49;");
+        
 
         // Etiqueta principal
         Label socialLabel = new Label("Configuración Social");
         socialLabel.setFont(Font.font("Arial", FontWeight.BOLD, 24));
         socialLabel.setStyle("-fx-text-fill: white;");
 
-        // Botón "Cuenta"
-        Button accountButton = new Button("Cuenta");
+        Region region11 = new Region();
+        region11.setPrefHeight(5);
+
+        // Botón "Cuenta" con imagen
+        // Cargar la imagen
+        Image accountIcon = new Image("link.png");  // Reemplaza con la ruta de tu imagen
+        ImageView accountIconView = new ImageView(accountIcon);
+        accountIconView.setFitWidth(20);  // Ajusta el tamaño de la imagen
+        accountIconView.setFitHeight(20);
+
+        // Crear un contenedor HBox para el texto y la imagen (texto primero)
+        HBox accountButtonContent = new HBox(15);  // Espacio entre el texto y la imagen
+        accountButtonContent.setAlignment(Pos.CENTER);  // Centrar contenido dentro del HBox
+
+        // Establecer el texto con estilo
+        Label accountTextLabel = new Label("Cuenta");
+        accountTextLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        accountTextLabel.setTextFill(javafx.scene.paint.Color.WHITE);  // Color de texto blanco
+
+        // Añadir texto e imagen al HBox
+        accountButtonContent.getChildren().addAll(accountTextLabel, accountIconView);
+
+        // Configurar el botón
+        Button accountButton = new Button();  // Botón vacío porque usamos el HBox como contenido
+        accountButton.setGraphic(accountButtonContent);  // Asignar el HBox al botón
         accountButton.setStyle(
             "-fx-background-color: #364C63; " +
             "-fx-border-color: #5A6D86; " +
             "-fx-border-width: 2; " +
             "-fx-border-radius: 5; " +
             "-fx-background-radius: 5;" +
-            "-fx-text-fill: #FFFFFF;"
+            "-fx-text-fill: #999999;"
         );
         accountButton.setPrefWidth(200);
-        accountButton.setPrefHeight(40);
+        accountButton.setPrefHeight(50);
+
+        Region region8 = new Region();
+        region8.setPrefHeight(5);
 
         // CheckBoxes
         CheckBox publicProfile = new CheckBox("Perfil Público");
@@ -416,9 +444,33 @@ public class SettingsUI extends Application {
         );
         downloadInfoButton.setPrefWidth(200);
         downloadInfoButton.setPrefHeight(40);
+        downloadInfoButton.setFont(Font.font("Arial", 14));
+        downloadInfoButton.setTextFill(javafx.scene.paint.Color.WHITE);
+
+        Region region9 = new Region();
+        region9.setPrefHeight(15);
 
         // Botón "Agregar Cuenta"
-        Button addAccountButton = new Button("Agregar Cuenta");
+        Image addAccountIcon = new Image("link.png");  // Reemplaza con la ruta de tu imagen
+        ImageView addAccountIconView = new ImageView(addAccountIcon);
+        addAccountIconView.setFitWidth(20);  // Ajusta el tamaño de la imagen
+        addAccountIconView.setFitHeight(20);
+
+        // Crear un contenedor HBox para el texto y la imagen (texto primero)
+        HBox addAccountButtonContent = new HBox(15);  // Espacio entre el texto y la imagen
+        addAccountButtonContent.setAlignment(Pos.CENTER);  // Centrar contenido dentro del HBox
+
+        // Establecer el texto con estilo
+        Label addAccountTextLabel = new Label("Agregar Cuenta");
+        addAccountTextLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        addAccountTextLabel.setTextFill(javafx.scene.paint.Color.WHITE);  // Color de texto blanco
+
+        // Añadir texto e imagen al HBox
+        addAccountButtonContent.getChildren().addAll(addAccountTextLabel, addAccountIconView);
+
+        // Configurar el botón
+        Button addAccountButton = new Button();  // Botón vacío porque usamos el HBox como contenido
+        addAccountButton.setGraphic(addAccountButtonContent);  // Asignar el HBox al botón
         addAccountButton.setStyle(
             "-fx-background-color: #364C63; " +
             "-fx-border-color: #5A6D86; " +
@@ -428,28 +480,40 @@ public class SettingsUI extends Application {
             "-fx-text-fill: #FFFFFF;"
         );
         addAccountButton.setPrefWidth(200);
-        addAccountButton.setPrefHeight(40);
+        addAccountButton.setPrefHeight(50);
 
         // Botón "Cerrar Sesión"
-        Button logoutButton = new Button("Cerrar Sesión");
+        HBox logoutButtonContent = new HBox(15);  // Espacio entre texto e imagen (aunque no tiene imagen)
+        logoutButtonContent.setAlignment(Pos.CENTER);  // Centrar contenido dentro del HBox
+
+        Label logoutTextLabel = new Label("Cerrar Sesión");
+        logoutTextLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        logoutTextLabel.setTextFill(javafx.scene.paint.Color.WHITE);  // Color de texto blanco
+
+        logoutButtonContent.getChildren().addAll(logoutTextLabel);
+
+        Button logoutButton = new Button();
+        logoutButton.setGraphic(logoutButtonContent);  // Asignar el HBox al botón
         logoutButton.setStyle(
-            "-fx-background-color: red; " +
-            "-fx-border-color: #5A6D86; " +
+            "-fx-background-color: #B4182D; " +
+            "-fx-border-width: 2; " +
             "-fx-border-radius: 5; " +
-            "-fx-background-radius: 5;" +
             "-fx-text-fill: white;"
         );
         logoutButton.setPrefWidth(200);
-        logoutButton.setPrefHeight(40);
+        logoutButton.setPrefHeight(50);
 
         // Agregar todos los elementos al panel
         rightPanel.getChildren().addAll(
             socialLabel,
+            region11,
             accountButton,
+            region8,
             publicProfile,
             publicPlaylists,
             activityLog,
             downloadInfoButton,
+            region9,
             addAccountButton,
             logoutButton
 );
@@ -461,7 +525,7 @@ public class SettingsUI extends Application {
         mainPane.setRight(rightPanel);
 
         // Escena y configuración
-        Scene scene = new Scene(mainPane, 1050, 700);
+        Scene scene = new Scene(mainPane, 1000, 700);
         primaryStage.setTitle("Gestor de Ajustes");
         primaryStage.setScene(scene);
         primaryStage.show();
